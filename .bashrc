@@ -6,7 +6,14 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 
 # ps1
 source ~/.git-prompt.sh
-PS1='[\u@\h \w$(__git_ps1 " (%s)")]\$ \n'
+green='\[\033[1;32m\]';
+blue='\[\033[1;34m\]';
+cyan='\[\033[1;36m\]';
+magenta='\[\033[1;35m\]';
+red='\[\033[1;31m\]';
+yellow='\[\033[1;33m\]';
+default='\[\033[0m\]';
+PS1='['$yellow'\u'$default'@'$green'\h'$default'] '$cyan'\w '$magenta' $(__git_ps1 "(%s)") '$default' \n$';
 
 # for shortcut
 alias ls='ls -GwF'
@@ -44,11 +51,3 @@ PROMPT_COMMAND='share_history'
 shopt -u histappend
 
 export EDITOR='subl -w'
-
-# bash_completion
-BASH_COMPLETION=/usr/local/etc/bash_completion
-BASH_COMPLETION_DIR=/usr/local/etc/bash_completion.d
-BASH_COMPLETION_COMPAT_DIR=/usr/local/etc/bash_completion.d
-if [ -f /usr/local/etc/bash_completion ]; then
-    . /usr/local/etc/bash_completion
-fi
