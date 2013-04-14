@@ -35,13 +35,10 @@ function PHPLint()
 endfunction
 
 "project.vim
-" ファイルが選択されたら、ウィンドウを閉じる
 let g:proj_flags = "imstc"
 
-" <Learder>Pで、プロジェクトをトグルで開閉する
 :nmap <silent> <Leader>P <Plug>ToggleProject
 
-" <Leader>pで、デフォルトのプロジェクトを開く
 :nmap <silent> <Leader>p :Project<CR>
 
 " git add
