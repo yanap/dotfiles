@@ -13,8 +13,6 @@ let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
 if !isdirectory(s:neobundle_dir)
 
 " neobundle {{{
-  if executable('git')
-    echo 'Initializing neobundle'
     execute '!mkdir -p '.$BUNDLE
        \.' && git clone git@github.com:Shougo/neobundle.vim.git '.$BUNDLE.'/neobundle.vim'
        \.' && git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
@@ -46,11 +44,14 @@ if !isdirectory(s:neobundle_dir)
     echo 'git not found! Sorry, this .vimrc cannot be completely used without git.'
   endif
 else
+
 execute 'set runtimepath+='.expand(s:neobundle_dir)
 call neobundle#rc(expand($BUNDLE))
+
+" Let NeoBundle manage NeoBundle
 NeoBundle 'Shougo/neobundle.vim'
-  " nnoremap <silent> <S-b><S-b> :<C-u>NeoBundleUpdate<CR>
-  nnoremap <silent> <S-b><S-b> :<C-u>Unite neobundle/update<CR>
+NeoBundle 'Shougo/vimproc'
+
 " }}} neobundle
 
 " colorscheme {{{
@@ -63,7 +64,7 @@ NeoBundle 'xterm-color-table.vim'
   " http://www.vim.org/scripts/script.php?script_id=3412
 " }}} colorscheme
 
-endif
+filetype plugin indent on
 " }}} Bundles
 
 " basic {{{
