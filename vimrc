@@ -1,58 +1,52 @@
-" initialize {{{
+" Bundles {{{
 set nocompatible " viと互換モードにしない
 " 一旦ファイルタイプ関連を無効化する
 filetype off
 filetype plugin indent off
 scriptencoding utf-8
-" }}} initialize
-
-" Bundles {{{
-let $VIM = $HOME.'/.vim'
-let $BUNDLE = $VIM.'/bundle'
-let s:neobundle_dir = $BUNDLE.'/neobundle.vim'
-if !isdirectory(s:neobundle_dir)
 
 " neobundle {{{
-    execute '!mkdir -p '.$BUNDLE
-       \.' && git clone git@github.com:Shougo/neobundle.vim.git '.$BUNDLE.'/neobundle.vim'
-       \.' && git clone git@github.com:Shougo/unite.vim.git '.$BUNDLE.'/unite.vim'
-       \.' && git clone git@github.com:Shougo/neocomplcache.git '.$BUNDLE.'/neocomplcache'
-       \.' && git clone git@github.com:Shougo/vimproc.git '.$BUNDLE.'/vimproc'
-       \.' && git clone git@github.com:Shougo/vimfiler.git '.$BUNDLE.'/vimfiler'
-       \.' && git clone git@github.com:thinca/vim-quickrun.git '.$BUNDLE.'/vim-quickrun'
-       \.' && git clone git@github.com:Shougo/vimshell.git '.$BUNDLE.'/vimshell'
-    if s:ismac
-      if executable('llvm-gcc')
-        execute '!cd '.$BUNDLE.'/vimproc && make -f make_mac.mak'
-      elseif executable('gcc')
-        execute '!cd '.$BUNDLE.'/vimproc && '
-              \.'gcc -O2 -W -Wall -Wno-unused -bundle -fPIC -arch x86_64 -arch '
-              \.'i386 -o autoload/vimproc_mac.so autoload/proc.c -lutil'
-      else
-        echo 'gcc not found!'
-      endif
-    elseif s:iswin
-      echo 'access https://github.com/Shougo/vimproc/downloads to get dll'
-    else
-      if executable('gcc')
-        execute '!cd '.$BUNDLE.'/vimproc && make -f make_unix.mak'
-      else
-        echo 'gcc not found!'
-      endif
-    endif
-  else
-    echo 'git not found! Sorry, this .vimrc cannot be completely used without git.'
-  endif
-else
-
-execute 'set runtimepath+='.expand(s:neobundle_dir)
-call neobundle#rc(expand($BUNDLE))
-
+if has('vim_starting')
+  set runtimepath+=~/.vim/bundle/neobundle.vim/
+endif
+call neobundle#rc(expand('~/.vim/bundle/'))
 " Let NeoBundle manage NeoBundle
 NeoBundle 'Shougo/neobundle.vim'
-NeoBundle 'Shougo/vimproc'
-
 " }}} neobundle
+
+" unite {{{
+  NeoBundle 'Shougo/unite.vim'
+  NeoBundle 'tsukkee/unite-help'
+  NeoBundle 'h1mesuke/unite-outline'
+  NeoBundle 'basyura/unite-rails'
+  NeoBundle 'thinca/vim-unite-history'
+  NeoBundle 'tsukkee/unite-tag'
+  NeoBundle 'choplin/unite-vim_hacks'
+" }}} unite
+
+" utility {{{
+  " vimshell : vimのshell
+  NeoBundle 'Shougo/vimshell.git'
+  " vimproc : vimから非同期実行。vimshelleで必要
+  NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw32.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+  " vim-altercmd : Ex command拡張
+  NeoBundle 'tyru/vim-altercmd'
+  " urilib.vim : vim scriptからURLを扱うライブラリ
+  NeoBundle 'tyru/urilib.vim'
+  " Buffer管理のLibrary
+  NeoBundle 'thinca/vim-openbuf'
+  " vimからGit操作する
+  NeoBundle 'tpope/vim-fugitive'
+  " vimdoc-ja
+  NeoBundle 'vim-jp/vimdoc-ja'
+" }}} utility
 
 " colorscheme {{{
 try
@@ -60,9 +54,154 @@ NeoBundle 'nanotech/jellybeans.vim'
   colorscheme jellybeans
 catch
 endtry
-NeoBundle 'xterm-color-table.vim'
-  " http://www.vim.org/scripts/script.php?script_id=3412
+colorscheme desert
 " }}} colorscheme
+
+" powerline(statusline) {{{
+
+" }}}
+
+" completion {{{
+  " 入力補完
+  NeoBundle 'Shougo/neocomplcache'
+  " neocomplcacheのsinpet補完
+  NeoBundle 'Shougo/neosnippet.git'
+  " various langueages snippets
+  NeoBundle 'honza/snipmate-snippets'
+  " for rsense
+  NeoBundle 'm2ym/rsense'
+  NeoBundle 'taichouchou2/vim-rsense'
+  " rubyでrequire先を補完する
+  " NeoBundle 'ujihisa/neco-ruby'
+" }}} completion
+
+" search and move{{{
+  " vim-smartword : 単語移動がスマート
+  NeoBundle 'smartword'
+  " camelcasemotion : CamelCaseやsnake_case単位でのワード移動
+  NeoBundle 'camelcasemotion'
+  " <Leader><Leader>w/fなどで、motion先をhilightする
+  NeoBundle 'EasyMotion'
+  " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
+  NeoBundle 'matchit.zip'
+  " ruby用のmatchit拡張
+  NeoBundle 'ruby-matchit'
+  " grep.vim : 外部のgrep利用。:Grepで対話形式でgrep :Rgrepは再帰
+  NeoBundle 'grep.vim'
+  " eregex.vim : vimの正規表現をrubyやperlの正規表現な入力でできる :%S/perlregex/
+  NeoBundle 'eregex.vim'
+  " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
+  NeoBundle 'tyru/open-browser.vim'
+" }}} search and move
+
+" edit {{{
+  " NERD_commenter.vim :最強コメント処理 (<Leader>c<space>でコメントをトグル)
+  NeoBundle 'scrooloose/nerdcommenter.git'
+  " -- でメソッドチェーン整形
+  NeoBundle 'c9s/cascading.vim'
+  " visually indent guide
+  NeoBundle 'nathanaelkane/vim-indent-guides'
+  " XMLとかHTMLとかの編集機能を強化する
+  NeoBundle 'xmledit'
+  " Align : 高機能整形・桁揃えプラグイン
+  NeoBundle 'Align'
+  " フィルタリングと整形
+  NeoBundle 'godlygeek/tabular'
+  " マルチバイト対応の整形
+  NeoBundle 'h1mesuke/vim-alignta'
+  " YankRing.vim : ヤンクの履歴を管理し、順々に参照、出力できるようにする
+  NeoBundle 'YankRing.vim'
+  " undo履歴を追える (need python support)
+  NeoBundle 'Gundo'
+  " surround.vim : テキストを括弧で囲む／削除する
+  NeoBundle 'tpope/surround.vim'
+  " smartchr.vim : ==などの前後を整形
+  NeoBundle 'smartchr'
+  " vim-operator-user : 簡単にoperatorを定義できるようにする
+  NeoBundle 'operator-user'
+  " operator-camelize : camel-caseへの変換
+  NeoBundle 'operator-camelize'
+  " operator-replace : yankしたものでreplaceする
+  NeoBundle 'operator-replace'
+  " textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
+  NeoBundle 'textobj-user'
+  " vim-textobj-syntax : syntax hilightされたものをtext-objectに
+  NeoBundle 'kana/vim-textobj-syntax.git'
+  " vim-textobj-plugins : いろんなものをtext-objectにする
+  NeoBundle 'thinca/vim-textobj-plugins.git'
+  " vim-textobj-lastpat : 最後に検索されたパターンをtext-objectに
+  NeoBundle 'kana/vim-textobj-lastpat.git'
+  " vim-textobj-indent : インデントされたものをtext-objectに
+  NeoBundle 'kana/vim-textobj-indent.git'
+  " vim-textobj-function : 関数の中身をtext-objectに
+  NeoBundle 'kana/vim-textobj-function.git'
+  NeoBundle 'textobj-rubyblock'
+  " vim-textobj-entire : buffer全体をtext-objectに
+  NeoBundle 'textobj-entire'
+  " 「foo」 or 【bar】などをtext-objectに
+  NeoBundle 'textobj-jabraces'
+  " <C-a>でtrue/false切替。他色々
+  NeoBundle 'taku-o/vim-toggle'
+" }}}
+
+" programming {{{
+  " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
+  NeoBundle 'thinca/vim-quickrun'
+  " perldocやphpmanual等のリファレンスをvim上で見る
+  NeoBundle 'thinca/vim-ref'
+  " SQLUtilities : SQL整形、生成ユーティリティ
+  NeoBundle 'SQLUtilities'
+  " vim-ruby : VimでRubyを扱う際の最も基本的な拡張機能
+  NeoBundle 'vim-ruby/vim-ruby'
+  " rails.vim : rails的なアレ
+  NeoBundle 'tpope/vim-rails'
+  " Pydiction : Python用の入力補完
+  NeoBundle 'Pydiction'
+  " ソースコード上のメソッド宣言、変数宣言の一覧を表示
+  NeoBundle 'taglist.vim'
+  " エラーがある場所をhilight
+  NeoBundle 'errormarker.vim'
+  " tagsを利用したソースコード閲覧・移動補助機能 tagsファイルの自動生成
+  " NeoBundle 'Source-Explorer-srcexpl.vim'
+  " NERD_tree, taglist, srcexpl の統合
+  " NeoBundle 'trinity.vim'
+" }}} programming
+
+" syntax {{{
+  " haml
+  NeoBundle 'haml.zip'
+  " JavaScript
+  NeoBundle 'JavaScript-syntax'
+  " jQuery
+  NeoBundle 'jQuery'
+  " nginx conf
+  NeoBundle 'nginx.vim'
+  " markdown
+  NeoBundle 'tpope/vim-markdown'
+  " coffee script
+  NeoBundle 'kchmck/vim-coffee-script'
+  " python
+  NeoBundle 'yuroyoro/vim-python'
+  " clojure
+  NeoBundle 'jondistad/vimclojure'
+  " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
+  NeoBundle 'scrooloose/syntastic'
+" }}}
+
+" buffer {{{
+  " DumbBuf.vim : quickbufっぽくbufferを管理。 "<Leader>b<Space>でBufferList
+  NeoBundle 'DumbBuf'
+  " minibufexpl.vim : タブエディタ風にバッファ管理ウィンドウを表示
+  NeoBundle 'minibufexpl.vim'
+  " NERDTree : ツリー型エクスプローラ
+  NeoBundle 'The-NERD-tree'
+  " vtreeexplorer.vim : ツリー状にファイルやディレクトリの一覧を表示
+  NeoBundle 'vtreeexplorer'
+" }}} buffer
+
+" encoding {{{
+  NeoBundle 'banyan/recognize_charcode.vim'
+" }}} encoding
 
 filetype plugin indent on
 " }}} Bundles
