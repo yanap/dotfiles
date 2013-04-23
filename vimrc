@@ -66,8 +66,6 @@ colorscheme desert
   NeoBundle 'Shougo/neocomplcache'
   " neocomplcacheのsinpet補完
   NeoBundle 'Shougo/neosnippet.git'
-  " various langueages snippets
-  NeoBundle 'honza/snipmate-snippets'
   " for rsense
   NeoBundle 'm2ym/rsense'
   NeoBundle 'taichouchou2/vim-rsense'
@@ -113,8 +111,6 @@ colorscheme desert
   NeoBundle 'YankRing.vim'
   " undo履歴を追える (need python support)
   NeoBundle 'Gundo'
-  " surround.vim : テキストを括弧で囲む／削除する
-  NeoBundle 'tpope/surround.vim'
   " smartchr.vim : ==などの前後を整形
   NeoBundle 'smartchr'
   " vim-operator-user : 簡単にoperatorを定義できるようにする
@@ -159,12 +155,6 @@ colorscheme desert
   NeoBundle 'Pydiction'
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
   NeoBundle 'taglist.vim'
-  " エラーがある場所をhilight
-  NeoBundle 'errormarker.vim'
-  " tagsを利用したソースコード閲覧・移動補助機能 tagsファイルの自動生成
-  " NeoBundle 'Source-Explorer-srcexpl.vim'
-  " NERD_tree, taglist, srcexpl の統合
-  " NeoBundle 'trinity.vim'
 " }}} programming
 
 " syntax {{{
