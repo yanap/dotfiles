@@ -14,7 +14,8 @@ call neobundle#rc(expand('~/.vim/bundle/'))
 NeoBundle 'Shougo/neobundle.vim'
 " }}} neobundle
 
-" unite {{{
+" unite
+" {{{
   NeoBundle 'Shougo/unite.vim'
   NeoBundle 'tsukkee/unite-help'
   NeoBundle 'h1mesuke/unite-outline'
@@ -22,7 +23,8 @@ NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'thinca/vim-unite-history'
   NeoBundle 'tsukkee/unite-tag'
   NeoBundle 'choplin/unite-vim_hacks'
-" }}} unite
+" }}}
+" unite
 
 " utility {{{
   " vimshell : vimのshell
@@ -30,7 +32,7 @@ NeoBundle 'Shougo/neobundle.vim'
   " vimproc : vimから非同期実行。vimshelleで必要
   NeoBundle 'Shougo/vimproc', {
       \ 'build' : {
-      \     'windows' : 'make -f make_mingw32.mak',
+      \     'windows' : 'echo "Sorry, cannot update vimproc binary file in Windows."',
       \     'cygwin' : 'make -f make_cygwin.mak',
       \     'mac' : 'make -f make_mac.mak',
       \     'unix' : 'make -f make_unix.mak',
@@ -49,16 +51,20 @@ NeoBundle 'Shougo/neobundle.vim'
 " }}} utility
 
 " colorscheme {{{
-try
 NeoBundle 'nanotech/jellybeans.vim'
-  colorscheme jellybeans
-catch
-endtry
-colorscheme desert
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'vim-scripts/Wombat'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/rdark'
 " }}} colorscheme
 
 " powerline(statusline) {{{
-
+NeoBundle 'taichouchou2/alpaca_powertabline'
+NeoBundle 'Lokaltog/powerline',  { 'rtp' : 'powerline/bindings/vim'}
 " }}}
 
 " completion {{{
@@ -69,8 +75,6 @@ colorscheme desert
   " for rsense
   NeoBundle 'm2ym/rsense'
   NeoBundle 'taichouchou2/vim-rsense'
-  " rubyでrequire先を補完する
-  " NeoBundle 'ujihisa/neco-ruby'
 " }}} completion
 
 " search and move{{{
@@ -230,16 +234,28 @@ command! Rv source $MYVIMRC
 set helpfile=$VIMRUNTIME/doc/help.txt
 " }}} basic
 
-" statusline {{{
+" statusline "{{{
 set ruler
 set laststatus=2
 set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!=''?&fenc:&enc}]
       \[%{&ff}][%3l,%3c,%3p][%{strftime(\"%m/%d\ %H:%M\")}]
-" }}} statusline
+"}}} statusline
 
 " color {{{
-syntax on
+" colorscheme jellybeans
+" colorscheme hybrid
+" colorscheme twilight
+" colorscheme lucius
+" colorscheme railscasts
+" colorscheme solarized
+" colorscheme wombat
+" colorscheme molokai
+colorscheme rdark
+" colorscheme railscasts
+
+" set background=light
 set background=dark
+syntax on
 set synmaxcol=9999
 " }}} color
 
@@ -354,3 +370,147 @@ command! Utf8 edit ++enc=utf-8
 command! Jis Iso2022jp
 command! Sjis Cp932
 " }}}
+
+" plugins setting {{{
+
+" YankRing.vim
+nmap ,y ;YRShow<CR>
+
+" minibufexpl.vim
+let g:miniBufExplMapWindowNavVim=1 "hjklで移動
+let g:miniBufExplSplitBelow=0  " Put new window above
+let g:miniBufExplMapWindowNavArrows=1
+let g:miniBufExplMapCTabSwitchBufs=1
+let g:miniBufExplModSelTarget=1
+let g:miniBufExplSplitToEdge=1
+let g:miniBufExplMaxSize = 10
+" :Mtで表示をtoggle
+command! Mt :TMiniBufExplorer
+
+" Align
+" Alignを日本語で
+let g:Align_xslen = 3
+
+" VTreeExplorer
+" 縦に表示する
+let g:treeExpVertical=1
+
+" NERD_commenter.vim
+" コメントの間にスペースを空ける
+let NERDSpaceDelims=1
+" <Leader>xでコメントをtoggle(NERD_commenter.vim)
+map <Leader>x, c<space>
+" 未対応ファイルタイプのエラーメッセージを表示しない
+
+" grep.vim
+" 検索外のディレクトリ、ファイルパターン
+let Grep_Skip_Dirs = '.svn .git .hg'
+let Grep_Skip_Files = '*.bak *~'
+
+" Fugitive.vim
+nnoremap <Space>gd :<C-u>Gdiff<Enter>
+nnoremap <Space>gs :<C-u>Gstatus<Enter>
+nnoremap <Space>gl :<C-u>Glog<Enter>
+nnoremap <Space>ga :<C-u>Gwrite<Enter>
+nnoremap <Space>gc :<C-u>Gcommit<Enter>
+nnoremap <Space>gC :<C-u>Git commit --amend<Enter>
+nnoremap <Space>gb :<C-u>Gblame<Enter>
+
+" VTreeExplorer
+let g:treeExplVertical=1
+"<Leader>t<Space>でディレクトリツリー表示
+noremap <Leader>t<Space> :VSTreeExplore<CR>
+"分割したウィンドウのサイズ
+let g:treeExplWinSize=30
+
+" DumbBuf.vim
+"<Leader>b<Space>でBufferList
+let dumbbuf_hotkey = '<Leader>b<Space>'
+let dumbbuf_mappings = {
+    \ 'n': {
+        \'<Esc>': { 'opt': '<silent>', 'mapto': ':<C-u>close<CR>' }
+    \}
+\}
+let dumbbuf_single_key  = 1
+let dumbbuf_updatetime  = 1    " &updatetimeの最小値
+let dumbbuf_wrap_cursor = 0
+let dumbbuf_remove_marked_when_close = 1
+
+" vim-indent-guides
+nnoremap <silent> <Space>id :<C-u>IndentGuidesToggle<Enter>
+let g:indent_guides_auto_colors = 0
+let g:indent_guides_start_level = 4
+let g:indent_guides_guide_size = 1
+autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red ctermbg=3
+autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
+if 'dark' == &background
+    hi IndentGuidesOdd  ctermbg=black
+    hi IndentGuidesEven ctermbg=darkgrey
+else
+    hi IndentGuidesOdd  ctermbg=white
+    hi IndentGuidesEven ctermbg=lightgrey
+endif
+
+" taglist.Vim
+" 関数一覧
+set tags=tags
+let Tlist_Show_One_File = 1               " 現在編集中のソースのタグしか表示しない
+let Tlist_Exit_OnlyWindow = 1             " taglistのウィンドーが最後のウィンドーならばVimを閉じる
+let Tlist_Enable_Fold_Column = 1          " 折りたたみ
+let Tlist_Auto_Open = 1                   " 自動表示
+let Tlist_Auto_Update = 1
+let Tlist_WinWidth = 30
+nmap <F7> :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
+nmap <Leader>tl :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
+
+" operator-camelize.vim
+" camel-caseへの変換
+map <Leader>u <Plug>(operator-camelize)
+map <Leader>U <Plug>(operator-decamelize)
+
+" operator-replace.vim
+" RwなどでYankしてるもので置き換える
+map R <Plug>(operator-replace)
+
+" smartword.vim
+noremap ,w  w
+noremap ,b  b
+noremap ,e  e
+noremap ,ge  ge
+
+map W  <Plug>(smartword-w)
+map B  <Plug>(smartword-b)
+map E  <Plug>(smartword-e)
+map ge  <Plug>(smartword-ge)
+
+" camelcasemotion.vim
+" <Shift-wbe>でCameCaseやsnake_case単位での単語移動
+map <silent> w <Plug>CamelCaseMotion_w
+map <silent> b <Plug>CamelCaseMotion_b
+map <silent> e <Plug>CamelCaseMotion_e
+" text-objectで使用できるように
+omap <silent> iw <Plug>CamelCaseMotion_iw
+xmap <silent> iw <Plug>CamelCaseMotion_iw
+omap <silent> ib <Plug>CamelCaseMotion_ib
+xmap <silent> ib <Plug>CamelCaseMotion_ib
+omap <silent> ie <Plug>CamelCaseMotion_ie
+xmap <silent> ie <Plug>CamelCaseMotion_ie
+
+" vimshell.vim
+"
+
+" unite.vim
+"
+
+" quickrun.vim
+"
+
+" Syntastic
+" エラー行をsignで表示する
+let g:syntastic_enable_signs = 1
+" 可能ならhighligt表示する
+let g:syntastic_enable_highlighting = 1
+" 自動的に開いたり閉じたりする
+let g:syntastic_auto_loc_list=1
+
+" }}} plugins setting
