@@ -46,6 +46,8 @@ NeoBundle 'Shougo/neobundle.vim'
   NeoBundle 'thinca/vim-openbuf'
   " vimからGit操作する
   NeoBundle 'tpope/vim-fugitive'
+  " powerlineはmacvimしか使えないからやめた
+  NeoBundle 'yanap/vim-powerline'
   " vimdoc-ja
   NeoBundle 'vim-jp/vimdoc-ja'
 " }}} utility
@@ -61,11 +63,6 @@ NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
 " }}} colorscheme
-
-" powerline(statusline) {{{
-NeoBundle 'taichouchou2/alpaca_powertabline'
-NeoBundle 'Lokaltog/powerline',  { 'rtp' : 'powerline/bindings/vim'}
-" }}}
 
 " completion {{{
   " 入力補完
@@ -250,7 +247,7 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 " colorscheme solarized
 " colorscheme wombat
 " colorscheme molokai
-colorscheme rdark
+" colorscheme rdark
 " colorscheme railscasts
 
 " set background=light

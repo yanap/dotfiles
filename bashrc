@@ -4,6 +4,7 @@ export LC_CTYPE
 export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
+
 # ps1
 source ~/.git-prompt.sh
 green='\[\033[1;32m\]';
