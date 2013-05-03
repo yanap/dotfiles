@@ -53,7 +53,9 @@ shopt -u histappend
 
 export EDITOR='subl -w'
 
-#export PATH="$HOME/.rbenv/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin/:$HOME/bin"
+# reset path
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin/:$HOME/bin"
+
+#export RBENV_ROOT=/usr/local/rbenv
+#export PATH="$RBENV_ROOT/bin:$PATH"
 #eval "$(rbenv init -)"
-#`ln -s /usr/bin/vagrant /Users/yanap/.rbenv/shims/vagrant`
