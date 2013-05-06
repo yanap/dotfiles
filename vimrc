@@ -6,10 +6,16 @@ filetype plugin indent off
 scriptencoding utf-8
 
 " neobundle {{{
+let s:neobundle_dir = expand('~/.vim/bundle')
 if has('vim_starting')
+  if !isdirectory(s:neobundle_dir.'/neobundle.vim')
+    execute printf('!git clone %s://github.com/Shougo/neobundle.vim.git',
+      \ (exists('$http_proxy') ? 'https' : 'git'))
+      \ s:neobundle_dir.'/neobundle.vim'
+  endif
   set runtimepath+=~/.vim/bundle/neobundle.vim/
 endif
-call neobundle#rc(expand('~/.vim/bundle/'))
+call neobundle#rc(s:neobundle_dir)
 " Let NeoBundle manage NeoBundle
 NeoBundleFetch 'Shougo/neobundle.vim'
 " }}} neobundle
@@ -479,7 +485,7 @@ set tags=tags
 let Tlist_Show_One_File = 1               " 現在編集中のソースのタグしか表示しない
 let Tlist_Exit_OnlyWindow = 1             " taglistのウィンドーが最後のウィンドーならばVimを閉じる
 let Tlist_Enable_Fold_Column = 1          " 折りたたみ
-let Tlist_Auto_Open = 1                   " 自動表示
+" let Tlist_Auto_Open = 1                   " 自動表示
 let Tlist_Auto_Update = 1
 let Tlist_WinWidth = 30
 nmap <F7> :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
@@ -994,7 +1000,7 @@ set tags=tags
 let Tlist_Show_One_File = 1               " 現在編集中のソースのタグしか表示しない
 let Tlist_Exit_OnlyWindow = 1             " taglistのウィンドーが最後のウィンドーならばVimを閉じる
 let Tlist_Enable_Fold_Column = 1          " 折りたたみ
-let Tlist_Auto_Open = 1                   " 自動表示
+"let Tlist_Auto_Open = 1                   " 自動表示
 let Tlist_Auto_Update = 1
 let Tlist_WinWidth = 30
 nmap <F7> :CMiniBufExplorer<CR>:TrinityToggleTagList<CR>:TMiniBufExplorer<CR>
@@ -1049,3 +1055,6 @@ let g:syntastic_enable_highlighting = 1
 let g:syntastic_auto_loc_list=1
 
 " }}} plugins setting
+"
+"
+" vim: foldmethod=marker

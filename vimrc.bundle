@@ -38,8 +38,42 @@ call neobundle#rc(s:neobundle_dir)
   " :cwindow :cwindowコマンドでQuickFixウィンドウを開いて、検索結果を確認
   " :cclose :ccloseコマンドでQuickFixウィンドウを閉じる
   NeoBundle 'vim-jp/vimdoc-ja'
+
+  " 文字コード自動判別プラグイン
+  NeoBundle 'banyan/recognize_charcode.vim'
+
   " ステータスライン
 
+  " シンタックス
+  " color 色
+NeoBundle 'nanotech/jellybeans.vim'
+NeoBundle 'w0ng/vim-hybrid'
+NeoBundle 'vim-scripts/twilight'
+NeoBundle 'jonathanfilip/vim-lucius'
+NeoBundle 'jpo/vim-railscasts-theme'
+NeoBundle 'altercation/vim-colors-solarized'
+NeoBundle 'vim-scripts/Wombat'
+NeoBundle 'tomasr/molokai'
+NeoBundle 'vim-scripts/rdark'
+  " 言語ごとの文法
+  " PHP
+  NeoBundle 'php.vim'
+  " haml
+  NeoBundle 'haml.zip'
+  " JavaScript
+  NeoBundle 'JavaScript-syntax'
+  " jQuery
+  NeoBundle 'jQuery'
+  " nginx conf
+  NeoBundle 'nginx.vim'
+  " markdown
+  NeoBundle 'tpope/vim-markdown'
+  " coffee script
+  NeoBundle 'kchmck/vim-coffee-script'
+  " clojure
+  NeoBundle 'jondistad/vimclojure'
+  " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
+  NeoBundle 'scrooloose/syntastic'
 " }}}
 
 " unite.vim  {{{
@@ -108,15 +142,13 @@ call neobundle#config('vimfiler', {
       \ })
   " undo履歴を追える (need python support)
   NeoBundle 'Gundo'
-
-
+  " vimからGit操作する
+  NeoBundle 'tpope/vim-fugitive'
 " }}}
 
 " 比較、検索 {{{
-
 " ackで検索する
 NeoBundle 'mileszs/ack.vim'
-
 " マークダウン用フォールディング {{{ }}} で折り畳む設定プラグイン
 NeoBundleLazy 'thinca/vim-ft-markdown_fold', { 'autoload' : {
       \ 'filetypes' : ['markdown']
@@ -125,31 +157,31 @@ NeoBundleLazy 'thinca/vim-ft-help_fold', {
       \ 'autoload' : {
       \   'filetypes' : ['help']
       \ }}
-
   " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
   NeoBundle 'matchit.zip'
   " ruby用のmatchit拡張
   NeoBundle 'ruby-matchit'
-
   " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
   NeoBundle 'tyru/open-browser.vim'
-
 " }}}
 
 " 作業効率 {{{
-
   " YankRing.vim : ヤンクの履歴を管理し、順々に参照、出力できるようにする
   " pコマンドでペースト実行後 CTRL-Pか、CTRL-N
   NeoBundle 'YankRing.vim'
   " visually indent guide インデント量の違いをハイライト表示する
   NeoBundle 'nathanaelkane/vim-indent-guides'
-
 " }}}
 
 " 編集 {{{
+  " XMLとかHTMLとかの編集機能を強化する
+  NeoBundle 'xmledit'
   " Align : 高機能整形・桁揃えプラグイン
   NeoBundle 'Align'
-
+  " フィルタリングと整形
+  NeoBundle 'godlygeek/tabular'
+  " マルチバイト対応の整形
+  NeoBundle 'h1mesuke/vim-alignta'
 " テキストオブジェクトを括弧やダブルクォートで囲む
 NeoBundle 'anyakichi/vim-surround', {
       \ 'autoload' : {
@@ -157,7 +189,6 @@ NeoBundle 'anyakichi/vim-surround', {
       \     ['n', '<Plug>Dsurround'], ['n', '<Plug>Csurround'],
       \     ['n', '<Plug>Ysurround'], ['n', '<Plug>YSurround']
       \ ]}}
-
   " textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
   NeoBundle 'textobj-user'
   " vim-textobj-syntax : syntax hilightされたものをtext-objectに
@@ -175,11 +206,22 @@ NeoBundle 'anyakichi/vim-surround', {
   NeoBundle 'textobj-entire'
   " 「foo」 or 【bar】などをtext-objectに
   NeoBundle 'textobj-jabraces'
-
 " }}}
 
 " 開発効率 {{{
-
+  " vimshell : vimのshell
+  NeoBundle 'Shougo/vimshell.git'
+  " vimproc : vimから非同期実行。vimshelleで必要
+  NeoBundle 'Shougo/vimproc', {
+      \ 'build' : {
+      \     'windows' : 'make -f make_mingw.mak',
+      \     'cygwin' : 'make -f make_cygwin.mak',
+      \     'mac' : 'make -f make_mac.mak',
+      \     'unix' : 'make -f make_unix.mak',
+      \    },
+      \ }
+  " urilib.vim : vim scriptからURLを扱うライブラリ
+  NeoBundle 'tyru/urilib.vim'
   " NERD_commenter.vim :コメント処理 (<Leader>c<space>でコメントをトグル)
   NeoBundle 'scrooloose/nerdcommenter.git'
   " perldocやphpmanual等のリファレンスをvim上で見る
@@ -197,17 +239,40 @@ NeoBundle 'anyakichi/vim-surround', {
   NeoBundle 'tpope/vim-rails'
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
   NeoBundle 'taglist.vim'
-
 " }}}
 
 " 記録の取り方  {{{
-
 " }}}
 
 " 置換処理  {{{
-
 " }}}
 
 " 入力処理  {{{
+  " true/falseをトグルで置き換える
+  " ノーマルモードで+, 挿入モードでCTRL-T
+  NeoBundle 'taku-o/vim-toggle'
+  " smartchr.vim : ==などの前後を整形
+  NeoBundle 'smartchr'
+NeoBundle 'Shougo/neocomplcache', '', 'default'
+call neobundle#config('neocomplcache', {
+      \ 'lazy' : 1,
+      \ 'autoload' : {
+      \   'insert' : 1,
+      \ }})
 
+NeoBundle 'Shougo/neocomplcache-rsense', '', 'default'
+call neobundle#config('neocomplcache-rsense', {
+      \ 'lazy' : 1,
+      \ 'depends' : 'Shougo/neocomplcache',
+      \ 'autoload' : { 'filetypes' : 'ruby' }
+      \ })
+
+NeoBundle 'Shougo/neosnippet', '', 'default'
+call neobundle#config('neosnippet', {
+      \ 'lazy' : 1,
+      \ 'autoload' : {
+      \   'insert' : 1,
+      \   'filetypes' : 'snippet',
+      \   'unite_sources' : ['snippet', 'neosnippet/user', 'neosnippet/runtime'],
+      \ }})
 " }}}
