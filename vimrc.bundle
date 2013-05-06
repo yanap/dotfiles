@@ -1,0 +1,213 @@
+" neobundle,.vimでvimのプラグインを管理する
+" なければ、githubから取得する
+
+let s:neobundle_dir = expand('~/.bundle')
+if has('vim_starting') "{{{
+  " Set runtimepath.
+  " Load neobundle.
+  if isdirectory('neobundle.vim')
+    set runtimepath+=neobundle.vim
+  elseif finddir('neobundle.vim', '.;') != ''
+    execute 'set runtimepath+=' . finddir('neobundle.vim', '.;')
+  elseif &runtimepath !~ '/neobundle.vim'
+    if !isdirectory(s:neobundle_dir.'/neobundle.vim')
+      execute printf('!git clone %s://github.com/Shougo/neobundle.vim.git',
+            \ (exists('$http_proxy') ? 'https' : 'git'))
+            \ s:neobundle_dir.'/neobundle.vim'
+    endif
+    execute 'set runtimepath+=' . s:neobundle_dir.'/neobundle.vim'
+  endif
+endif
+"}}}
+
+let g:neobundle#enable_tail_path = 1
+let g:neobundle#default_options = {
+      \ 'default' : { 'overwrite' : 0 },
+      \ }
+
+call neobundle#rc(s:neobundle_dir)
+
+" 環境設定 {{{
+  " プラグイン管理
+  NeoBundleFetch 'Shougo/neobundle.vim', '', 'default'
+  " 日本語ヘルプ
+  " :help {検索ワード}, :helpgrep {検索ワード}
+  " :help eval@en @enをつけると英語で検索
+  " :helpgrepで検索結果を確認するための手順
+  " :helpgrep locale 1. :helpgrepコマンドでヘルプ検索を行う
+  " :cwindow :cwindowコマンドでQuickFixウィンドウを開いて、検索結果を確認
+  " :cclose :ccloseコマンドでQuickFixウィンドウを閉じる
+  NeoBundle 'vim-jp/vimdoc-ja'
+  " ステータスライン
+
+" }}}
+
+" unite.vim  {{{
+NeoBundle 'Shougo/unite.vim', '', 'default'
+call neobundle#config('unite.vim',{
+      \ 'lazy' : 1,
+      \ 'autoload' : {
+      \   'commands' : [{ 'name' : 'Unite',
+      \                   'complete' : 'customlist,unite#complete_source'},
+      \                 'UniteWithCursorWord', 'UniteWithInput']
+      \ }})
+NeoBundle 'Shougo/unite-build', '', 'default'
+NeoBundle 'Shougo/unite-ssh', '', 'default'
+NeoBundleLazy 'ujihisa/vimshell-ssh', { 'autoload' : {
+      \ 'filetypes' : 'vimshell',
+      \ }}
+NeoBundle 'Shougo/unite-sudo', '', 'default'
+NeoBundleLazy 'Shougo/unite-help', { 'autoload' : {
+      \ 'unite_sources' : 'help'
+      \ }}
+NeoBundle 'Shougo/unite-outline', '', 'default'
+call neobundle#config('unite-outline', {
+      \ 'lazy' : 1,
+      \ 'autoload' : {
+      \   'unite_sources' : 'outline'},
+      \ })
+NeoBundleLazy 'tsukkee/unite-tag', { 'autoload' : {
+      \ 'unite_sources' : 'tag'
+      \ }}
+NeoBundleLazy 'thinca/vim-unite-history', { 'autoload' : {
+      \ 'unite_sources' : ['history/command', 'history/search']
+      \ }}
+" }}}
+
+" ファイル操作 {{{
+  " バッファ
+  " Buffer管理のLibrary
+  NeoBundle 'thinca/vim-openbuf'
+  " DumbBuf.vim : quickbufっぽくbufferを管理。 "<Leader>b<Space>でBufferList
+  NeoBundle 'DumbBuf'
+  " minibufexpl.vim : タブエディタ風にバッファ管理ウィンドウを表示
+  NeoBundle 'minibufexpl.vim'
+  " NERDTree : ツリー型エクスプローラ
+  NeoBundle 'The-NERD-tree'
+  " vtreeexplorer.vim : ツリー状にファイルやディレクトリの一覧を表示
+  NeoBundle 'vtreeexplorer'
+" netrwじゃなくて、vimfilerでファイル操作する
+NeoBundle 'Shougo/vimfiler', '', 'default'
+call neobundle#config('vimfiler', {
+      \ 'lazy' : 1,
+      \ 'depends' : 'Shougo/unite.vim',
+      \ 'autoload' : {
+      \    'commands' : [
+      \                  { 'name' : 'VimFiler',
+      \                    'complete' : 'customlist,vimfiler#complete' },
+      \                  { 'name' : 'VimFilerExplorer',
+      \                    'complete' : 'customlist,vimfiler#complete' },
+      \                  { 'name' : 'Edit',
+      \                    'complete' : 'customlist,vimfiler#complete' },
+      \                  { 'name' : 'Write',
+      \                    'complete' : 'customlist,vimfiler#complete' },
+      \                  'Read', 'Source'],
+      \    'mappings' : ['<Plug>(vimfiler_switch)'],
+      \    'explorer' : 1,
+      \ }
+      \ })
+  " undo履歴を追える (need python support)
+  NeoBundle 'Gundo'
+
+
+" }}}
+
+" 比較、検索 {{{
+
+" ackで検索する
+NeoBundle 'mileszs/ack.vim'
+
+" マークダウン用フォールディング {{{ }}} で折り畳む設定プラグイン
+NeoBundleLazy 'thinca/vim-ft-markdown_fold', { 'autoload' : {
+      \ 'filetypes' : ['markdown']
+      \ }}
+NeoBundleLazy 'thinca/vim-ft-help_fold', {
+      \ 'autoload' : {
+      \   'filetypes' : ['help']
+      \ }}
+
+  " matchit.vim : 「%」による対応括弧へのカーソル移動機能を拡張
+  NeoBundle 'matchit.zip'
+  " ruby用のmatchit拡張
+  NeoBundle 'ruby-matchit'
+
+  " open-browser.vim : カーソルの下のURLを開くor単語を検索エンジンで検索
+  NeoBundle 'tyru/open-browser.vim'
+
+" }}}
+
+" 作業効率 {{{
+
+  " YankRing.vim : ヤンクの履歴を管理し、順々に参照、出力できるようにする
+  " pコマンドでペースト実行後 CTRL-Pか、CTRL-N
+  NeoBundle 'YankRing.vim'
+  " visually indent guide インデント量の違いをハイライト表示する
+  NeoBundle 'nathanaelkane/vim-indent-guides'
+
+" }}}
+
+" 編集 {{{
+  " Align : 高機能整形・桁揃えプラグイン
+  NeoBundle 'Align'
+
+" テキストオブジェクトを括弧やダブルクォートで囲む
+NeoBundle 'anyakichi/vim-surround', {
+      \ 'autoload' : {
+      \   'mappings' : [
+      \     ['n', '<Plug>Dsurround'], ['n', '<Plug>Csurround'],
+      \     ['n', '<Plug>Ysurround'], ['n', '<Plug>YSurround']
+      \ ]}}
+
+  " textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
+  NeoBundle 'textobj-user'
+  " vim-textobj-syntax : syntax hilightされたものをtext-objectに
+  NeoBundle 'kana/vim-textobj-syntax.git'
+  " vim-textobj-plugins : いろんなものをtext-objectにする
+  NeoBundle 'thinca/vim-textobj-plugins.git'
+  " vim-textobj-lastpat : 最後に検索されたパターンをtext-objectに
+  NeoBundle 'kana/vim-textobj-lastpat.git'
+  " vim-textobj-indent : インデントされたものをtext-objectに
+  NeoBundle 'kana/vim-textobj-indent.git'
+  " vim-textobj-function : 関数の中身をtext-objectに
+  NeoBundle 'kana/vim-textobj-function.git'
+  NeoBundle 'textobj-rubyblock'
+  " vim-textobj-entire : buffer全体をtext-objectに
+  NeoBundle 'textobj-entire'
+  " 「foo」 or 【bar】などをtext-objectに
+  NeoBundle 'textobj-jabraces'
+
+" }}}
+
+" 開発効率 {{{
+
+  " NERD_commenter.vim :コメント処理 (<Leader>c<space>でコメントをトグル)
+  NeoBundle 'scrooloose/nerdcommenter.git'
+  " perldocやphpmanual等のリファレンスをvim上で見る
+  " :Ref perldoc LWP
+  " :call ref#rmcache('perldoc') キャッシュを削除
+  NeoBundle 'thinca/vim-ref'
+  " quickrun.vim : 編集中のファイルを簡単に実行できるプラグイン
+  " :QuickRun,  <Leader>r
+  NeoBundle 'thinca/vim-quickrun'
+  " SQLUtilities : SQL整形、生成ユーティリティ
+  NeoBundle 'SQLUtilities'
+  " vim-ruby : VimでRubyを扱う際の最も基本的な拡張機能
+  NeoBundle 'vim-ruby/vim-ruby'
+  " rails.vim : rails的なアレ
+  NeoBundle 'tpope/vim-rails'
+  " ソースコード上のメソッド宣言、変数宣言の一覧を表示
+  NeoBundle 'taglist.vim'
+
+" }}}
+
+" 記録の取り方  {{{
+
+" }}}
+
+" 置換処理  {{{
+
+" }}}
+
+" 入力処理  {{{
+
+" }}}
