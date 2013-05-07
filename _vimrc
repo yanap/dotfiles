@@ -136,7 +136,9 @@ set complete+=k            " 補完に辞書ファイル追加
 let g:neocomplcache_enable_at_startup = 1
 
 " 補完メニューの色を変更
-
+highlight Pmenu ctermbg=8
+highlight PmenuSel ctermbg=1
+highlight PmenuSbar ctermbg=0
 
 " }}} complete
 
