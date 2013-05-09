@@ -18,16 +18,26 @@ PS1='['$yellow'\u'$default'@'$green'\h'$default'] '$cyan'\w '$default' \n$ ';
 alias ls='ls -GwF'
 alias ll='ls -GwFalh'
 alias la='ls -alh'
-alias t='tar zxvf'
-alias t-='tar xvf -'
-alias b='bzip2 -dc'
-alias dh='df -h'
-alias v='vim'
-alias grep='grep --exclude=*.svn*'
-alias greprn='grep -rn --exclude=*.svn*'
-alias bye='sudo shutdown -h now'
-alias rsync='rsync --exclude=*.svn*'
-alias gst='git status'
+
+# for svn command shortcut
+dir=~/Documents/01_works/006_furima
+svndir="$dir/09_デザイン"
+if [ -d $svndir ]; then
+    echo 'already svndir.'
+else
+    mkdir -p $svndir
+fi
+alias m="cd $svndir"
+alias f="cd $svndir && open ."
+alias co="cd $dir && svn checkout http://172.17.127.150/svn/repos/repo/frma/trunk/doc/09_%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/ && cd $svndir"
+alias svncat="cd $svndir && svn cat http://172.17.127.150/svn/repos/repo/frma/trunk/doc/09_%E3%83%87%E3%82%B6%E3%82%A4%E3%83%B3/"
+alias up="cd $svndir && svn update −−set-depth infinity"
+alias st="cd $svndir && svn status"
+alias ci="svn commit"
+alias revert="svn revert"
+alias all_revert="cd $svndir && svn revert --recursive ."
+alias add="svn add"
+
 
 #for my dev space
 workspacepath=''
