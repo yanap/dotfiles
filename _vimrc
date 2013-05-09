@@ -32,16 +32,26 @@ set viminfo='50,<1000,s100,\"50  " viminfoファイルの設定
 set modelines=0 " モードラインは無効
 " ファイルブラウザの開始時、どのディレクトリを開くかを指定する。
 set browsedir=buffer " バッファで開いているファイルのディレクトリ
-" OSのクリップボードを使用する
-set clipboard+=unnamed
 " ターミナルでマウスを使用できるようにする
 set mouse=a
 set guioptions+=a
 set ttymouse=xterm2
-"ヤンクした文字は、システムのクリップボードに入れる"
-set clipboard=unnamed
-" 挿入モードでCtrl+kを押すとクリップボードの内容を貼り付けられるようにする "
-imap <C-p>  <ESC>"*pa
+
+" 1単語分のテキストをコピー。コピーしたテキストはクリップボードに入ります。
+" "*yw
+"
+" 7行分のテキストをカット。カットしたテキストはクリップボードに入ります。
+" "*7D
+" カーソル位置にクリップボードのテキストをペースト。
+" "*p
+" 「*レジスタ」のデータを出力
+" <C-r>*
+"
+" ビジュアルモードで選択したテキストが、クリップボードに入るようにする。
+set clipboard+=autoselect
+" 無名レジスタに入るデータを、*レジスタにも入れる。
+set clipboard+=unnamed
+
 " Ev/Rvでvimrcの編集と反映
 command! Ev edit $MYVIMRC
 command! Rv source $MYVIMRC
@@ -174,7 +184,7 @@ inoremap <C-o> <ESC>:<C-U>YRPaste 'p'<CR>i
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
 " 保存時にtabをスペースに変換する
-autocmd BufWritePre * :%s/\t/  /ge
+"autocmd BufWritePre * :%s/\t/  /ge
 " }}}
 
 " encoding {{{

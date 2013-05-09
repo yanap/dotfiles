@@ -146,9 +146,10 @@ call neobundle#config('vimfiler', {
   NeoBundle 'tpope/vim-fugitive'
 " }}}
 
-" 比較、検索 {{{
-" ackで検索する
-NeoBundle 'mileszs/ack.vim'
+" 比較、検索 compare search  {{{
+" ag(The Silver Searcher)で検索する
+" :Ag [options] {pattern} [{directory}]
+NeoBundle 'rking/ag.vim'
 " マークダウン用フォールディング {{{ }}} で折り畳む設定プラグイン
 NeoBundleLazy 'thinca/vim-ft-markdown_fold', { 'autoload' : {
       \ 'filetypes' : ['markdown']
