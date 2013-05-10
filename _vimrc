@@ -47,10 +47,9 @@ set ttymouse=xterm2
 " 「*レジスタ」のデータを出力
 " <C-r>*
 "
-" ビジュアルモードで選択したテキストが、クリップボードに入るようにする。
-set clipboard+=autoselect
 " 無名レジスタに入るデータを、*レジスタにも入れる。
-set clipboard+=unnamed
+" ビジュアルモードで選択したテキストが、クリップボードに入るようにする。
+set clipboard=unnamed,autoselect
 
 " Ev/Rvでvimrcの編集と反映
 command! Ev edit $MYVIMRC
