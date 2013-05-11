@@ -61,6 +61,17 @@ map!/noremap! NOMAL, COMMAND
 <buffer> バッファローカルなキーマッピングを定義
 <expr> マップ先の文字列をVimの式とみなして、評価した結果の文字列をマップします
 
+* mapleader
+
+設定されていない場合にはバックスラッシュが使用されます。例:
+:map <Leader>A  oanother line<Esc>
+これは次のものと同じ意味です: >
+:map \A  oanother line<Esc>
+しかし次のように設定したあとでは: >
+:let mapleader = ","
+次のものと同じ意味になります: >
+:map ,A  oanother line<Esc>
+
 ### 変数
 let, unlet 設定、解除
 
@@ -94,5 +105,66 @@ for リストの中身を走査
     endfunction
 
 function, function! 同名の関数を上書き
+
+* autocommand
+イベント発生時にコマンドを実行する
+
+    :au[tocmd] [group] {event} {pat} [nested] {cmd}
+
+:autocmd! 削除
+
+### ヘルプ
+:help,  <F1>, <Help> キー
+
+    :help {subject}
+    :help :edit
+
+* ヘルプ内での移動
+CTRL-] 詳細項目への移動
+CTRL-T, CTRL-O 戻る
+
+### ウィンドウを移動
+
+CTRL-W CTRL-W 画面移動
+CTRL-W h 左の画面に移動
+CTRL-W j 上の画面に移動
+CTRL-W k 下の画面に移動
+CTRL-W l 右の画面に移動
+
+### クリップボード
+
+快適なコピペ駆動開発のために(笑)
+
+    brew install macvim
+
+して、.bashrcに
+
+    export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+    alias macvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+を設定してmacvimを使うか
+    hg clone https://vim.googlecode.com/hg/ vim
+    cd vim
+    hg update vim73
+    make clean
+    ./configure --prefix=/usr/local --enable-multibyte --enable-xim --enable-fontset --enable-rubyinterp --enable-perlinterp --enable-pythoninterp --with-features=huge --disable-selinux
+    make
+    make install
+
+色々、コンパイルの仕方はあるけど、上記のような感じで +clipboardつきのvimをインストールしてあげてbashrcとかに
+
+    alias vim='/usr/local/bin/vim'
+
+vimで起動するようにalias貼って.vimrcとかに
+
+    set clipboard=unnamed,autoselect
+
+を書けば、コピペ環境を構築できる
+
+### 編集
+
+* 複数行の行頭に同じ文字列を挿入する
+
+CTRL-VでVISUAL BLOCKモードにしてIを押してテキストを入力しESCかCTRL-[で抜ける
+すると選択範囲の左端に挿入される Aだと右端
 
 

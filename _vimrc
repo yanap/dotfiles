@@ -15,7 +15,7 @@ endif
 filetype plugin indent on
 
 " basic {{{
-let mapleader = "," " キーマップリーダー
+let mapleader = ","
 set scrolloff=5 " スクロール時の上下の余白行数
 set textwidth=0 " 自動折り返ししない
 set nobackup " バックアップを取らない
