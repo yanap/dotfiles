@@ -141,7 +141,9 @@ CTRL-W l 右の画面に移動
 
     export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
     alias macvim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+
 を設定してmacvimを使うか
+
     hg clone https://vim.googlecode.com/hg/ vim
     cd vim
     hg update vim73
