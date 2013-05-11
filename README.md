@@ -1,6 +1,7 @@
 # dotfiles
 
 * 使い方
+
 ホームディレクトリにダウンロードして
 
     git clone git://github.com/yanap/dotfiles.git
