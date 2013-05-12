@@ -43,6 +43,7 @@ call neobundle#rc(s:neobundle_dir)
   NeoBundle 'banyan/recognize_charcode.vim'
 
   " ステータスライン
+  NeoBundle "Lokaltog/powerline"
 
   " シンタックス
   " color 色
@@ -56,23 +57,15 @@ NeoBundle 'vim-scripts/Wombat'
 NeoBundle 'tomasr/molokai'
 NeoBundle 'vim-scripts/rdark'
   " 言語ごとの文法
-  " PHP
-  NeoBundle 'php.vim'
-  " haml
-  NeoBundle 'haml.zip'
-  " JavaScript
-  NeoBundle 'JavaScript-syntax'
   " jQuery
   NeoBundle 'jQuery'
   " nginx conf
   NeoBundle 'nginx.vim'
   " markdown
   NeoBundle 'tpope/vim-markdown'
-  " coffee script
-  NeoBundle 'kchmck/vim-coffee-script'
   " clojure
   NeoBundle 'jondistad/vimclojure'
-  " syntax checking plugins exist for eruby, haml, html, javascript, php, python, ruby and sass.
+  " 色々な言語のsyntaxをチェック.
   NeoBundle 'scrooloose/syntastic'
 " }}}
 
