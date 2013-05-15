@@ -43,7 +43,7 @@ call neobundle#rc(s:neobundle_dir)
   NeoBundle 'banyan/recognize_charcode.vim'
 
   " ステータスライン
-  NeoBundle "Lokaltog/powerline"
+  NeoBundle 'Lokaltog/powerline',  { 'rtp' : 'powerline/bindings/vim'}
 
   " シンタックス
   " color 色

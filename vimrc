@@ -335,6 +335,12 @@ let g:syntastic_enable_highlighting = 1
 " 自動的に開いたり閉じたりする
 let g:syntastic_auto_loc_list=1
 
+" powerline
+let s:powerline_dir = expand('~/.bundle/powerline/powerline/bindings/vim')
+if isdirectory(s:powerline_dir)
+  set rtp+=s:powerline_dir
+endif
+
 " }}} plugins setting
 "
 " vim: foldmethod=marker
