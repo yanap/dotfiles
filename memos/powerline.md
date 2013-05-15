@@ -3,7 +3,9 @@
 ## 検証環境
 
 Mac OS X
+
 iTerm2
+
 macvim
 
 ## 手順
@@ -55,4 +57,14 @@ https://github.com/yanap/dotfiles/blob/master/vimrc.bundle
       set rtp+=s:powerline_dir
     endif
 
+### フォント
 
+https://github.com/yanap/dotfiles/tree/master/fonts
+
+ダウンロードしてきてやね
+
+    $ cp * /Library/Fonts/
+
+コピーするだけ
+
+あとは、iterm2の設定でフォントを for powerlineに設定して
