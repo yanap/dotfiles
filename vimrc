@@ -65,7 +65,7 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 "}}} statusline
 
 " color {{{
-" colorscheme jellybeans
+colorscheme jellybeans
 " colorscheme hybrid
 " colorscheme twilight
 " colorscheme lucius
@@ -73,7 +73,7 @@ set statusline=%{expand('%:p:t')}\ %<[%{expand('%:p:h')}]%=\ %m%r%y%w[%{&fenc!='
 " colorscheme wombat
 " colorscheme molokai
 " colorscheme rdark
-colorscheme railscasts
+" colorscheme railscasts
 
 " set background=light
 set background=dark
