@@ -233,6 +233,8 @@ NeoBundle 'anyakichi/vim-surround', {
   NeoBundle 'tpope/vim-rails'
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
   NeoBundle 'taglist.vim'
+  " php-doc コメント
+  NeoBundle 'vim-scripts/php-doc'
 " }}}
 
 " 記録の取り方  {{{

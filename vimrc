@@ -166,6 +166,8 @@ set iminsert=0 imsearch=0
 set noimcmdline
 " Tabキーを空白に変換
 set expandtab
+autocmd FileType php  setlocal noexpandtab
+
 " コンマの後に自動的にスペースを挿入
 inoremap , ,<Space>
 " XMLの閉タグを自動挿入
