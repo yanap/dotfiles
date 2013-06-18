@@ -31,17 +31,6 @@ alias bye='sudo shutdown -h now'
 alias rsync='rsync --exclude=*.svn*'
 alias gst='git status'
 
-#for my dev space
-workspacepath='/Volumes/frma/git/src'
-alias src='cd '$workspacepath
-alias web='cd '$workspacepath'/web'
-alias app='cd '$workspacepath'/web/application'
-alias model='cd '$workspacepath'/web/application/models'
-alias lib='cd '$workspacepath'/web/application/libraries'
-alias helper='cd '$workspacepath'/web/application/helpers'
-alias batch='cd '$workspacepath'/batch'
-alias cstool='cd '$workspacepath'/cstools'
-
 function share_history {
 history -a
 history -c
@@ -50,7 +39,8 @@ history -r
 PROMPT_COMMAND='share_history'
 shopt -u histappend
 
-export EDITOR='subl -w'
+# editor
+export EDITOR='vim'
 
 # reset path
 export PATH="$HOME/.gems/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/bin"
