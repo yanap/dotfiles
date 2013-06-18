@@ -54,7 +54,14 @@ shopt -u histappend
 export EDITOR='subl -w'
 
 # reset path
-export PATH="$HOME/.gems/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin/:$HOME/bin"
-export GEM_PATH="/Users/yanai_masahiro/.gems"
-#export PATH="$HOME/.rbenv/bin:$PATH"
-#eval "$(rbenv init -)"
+export PATH="$HOME/.gems/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/bin"
+
+# rbenv
+export RBENV_ROOT=/usr/local/rbenv
+export PATH="$RBENV_ROOT/bin:$PATH"
+eval "$(rbenv init -)"
+
+# nodejs
+export NODE_PATH=/usr/local/lib/node_modules
+
+
