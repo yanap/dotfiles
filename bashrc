@@ -50,7 +50,7 @@ history -r
 PROMPT_COMMAND='share_history'
 shopt -u histappend
 
-export EDITOR='subl -w'
+export EDITOR='vim'
 
 # reset path
 export PATH="$HOME/.gems/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/bin"
@@ -65,3 +65,6 @@ export NODE_PATH=/usr/local/lib/node_modules
 
 # bundle
 alias be="bundle exec"
+
+# vagrant cairo
+alias cairo="cd /Users/yanai_masahiro/repos/syukatu/cairo"
