@@ -4,7 +4,6 @@ export LC_CTYPE
 export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
-
 # ps1
 source ~/.git-prompt.sh
 green='\[\033[1;32m\]';
@@ -64,4 +63,5 @@ eval "$(rbenv init -)"
 # nodejs
 export NODE_PATH=/usr/local/lib/node_modules
 
-
+# bundle
+alias be="bundle exec"
