@@ -334,6 +334,10 @@ if isdirectory(s:powerline_dir)
   set rtp+=s:powerline_dir
 endif
 
+" airblade/vim-gitgutter
+nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
+nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
+
 " }}} plugins setting
 "
 " vim: foldmethod=marker
