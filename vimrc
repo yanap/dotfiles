@@ -321,12 +321,20 @@ omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 " Syntastic
+let g:syntastic_mode_map = {
+      \ "mode" : "active",
+      \ "active_filetypes" : ["ruby", "javascript", "json"],
+      \}
 " エラー行をsignで表示する
 let g:syntastic_enable_signs = 1
 " 可能ならhighligt表示する
 let g:syntastic_enable_highlighting = 1
 " 自動的に開いたり閉じたりする
 let g:syntastic_auto_loc_list=1
+" javascript の checkは jshintを使うようにする
+let g:syntastic_javascript_checker = "jshint"
+let g:syntastic_error_symbol='×'
+let g:syntastic_warning_symbol='△'
 
 " powerline
 let s:powerline_dir = expand('~/.bundle/powerline/powerline/bindings/vim')
