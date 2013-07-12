@@ -166,7 +166,7 @@ set iminsert=0 imsearch=0
 set noimcmdline
 " Tabキーを空白に変換
 set expandtab
-autocmd FileType php  setlocal noexpandtab
+"autocmd FileType php  setlocal noexpandtab
 
 " コンマの後に自動的にスペースを挿入
 inoremap , ,<Space>
@@ -185,7 +185,7 @@ inoremap <C-o> <ESC>:<C-U>YRPaste 'p'<CR>i
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
 " 保存時にtabをスペースに変換する
-"autocmd BufWritePre * :%s/\t/  /ge
+autocmd BufWritePre * :%s/\t/  /ge
 " }}}
 
 " encoding {{{
