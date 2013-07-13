@@ -6,7 +6,7 @@ export LSCOLORS=gxfxcxdxbxegedabagacad
 
 
 # ps1
-source ~/.git-prompt.sh
+source ~/dotfiles/.git-prompt.sh
 green='\[\033[1;32m\]';
 blue='\[\033[1;34m\]';
 cyan='\[\033[1;36m\]';
