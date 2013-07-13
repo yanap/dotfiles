@@ -12,7 +12,7 @@ macvim
 
 ### iTerm2インストール
 
-https://code.google.com/p/iterm2/downloads/list
+http://www.iterm2.com/#/section/downloads
 
 ### vimをインストール
 
