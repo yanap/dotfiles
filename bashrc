@@ -4,7 +4,6 @@ export LC_CTYPE
 export CLICOLOR=1
 export LSCOLORS=gxfxcxdxbxegedabagacad
 
-
 # ps1
 source ~/dotfiles/.git-prompt.sh
 green='\[\033[1;32m\]';
@@ -32,17 +31,6 @@ alias bye='sudo shutdown -h now'
 alias rsync='rsync --exclude=*.svn*'
 alias gst='git status'
 
-#for my dev space
-workspacepath='/Volumes/frma/git/src'
-alias src='cd '$workspacepath
-alias web='cd '$workspacepath'/web'
-alias app='cd '$workspacepath'/web/application'
-alias model='cd '$workspacepath'/web/application/models'
-alias lib='cd '$workspacepath'/web/application/libraries'
-alias helper='cd '$workspacepath'/web/application/helpers'
-alias batch='cd '$workspacepath'/batch'
-alias cstool='cd '$workspacepath'/cstools'
-
 function share_history {
 history -a
 history -c
@@ -51,8 +39,23 @@ history -r
 PROMPT_COMMAND='share_history'
 shopt -u histappend
 
-export EDITOR='subl -w'
+# editor
+export EDITOR='vim'
 
 # reset path
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin/:$HOME/bin"
+export PATH="$HOME/.gems/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/bin"
 
+# rbenv
+export RBENV_ROOT=/usr/local/rbenv
+export PATH="$RBENV_ROOT/bin:$PATH"
+eval "$(rbenv init -)"
+
+# nodejs
+export NODE_PATH=/usr/local/lib/node_modules
+
+# bundle
+alias be="bundle exec"
+
+# vagrant cairo
+alias cairo="cd /Users/yanai_masahiro/repos/syukatu/cairo"
+alias vcairo="cd /Users/yanai_masahiro/repos/syukatu/cairo-tools/vagrant"

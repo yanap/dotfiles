@@ -166,6 +166,8 @@ set iminsert=0 imsearch=0
 set noimcmdline
 " Tabキーを空白に変換
 set expandtab
+autocmd FileType php  setlocal noexpandtab
+
 " コンマの後に自動的にスペースを挿入
 inoremap , ,<Space>
 " XMLの閉タグを自動挿入
@@ -331,6 +333,10 @@ let s:powerline_dir = expand('~/.bundle/powerline/powerline/bindings/vim')
 if isdirectory(s:powerline_dir)
   set rtp+=s:powerline_dir
 endif
+
+" airblade/vim-gitgutter
+nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
+nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
 " }}} plugins setting
 "
