@@ -48,14 +48,10 @@ export PATH="$HOME/.gems/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/s
 # rbenv
 export RBENV_ROOT=/usr/local/rbenv
 export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init -)"
+#eval "$(rbenv init -)"
 
 # nodejs
 export NODE_PATH=/usr/local/lib/node_modules
 
 # bundle
 alias be="bundle exec"
-
-# vagrant cairo
-alias cairo="cd /Users/yanai_masahiro/repos/syukatu/cairo"
-alias vcairo="cd /Users/yanai_masahiro/repos/syukatu/cairo-tools/vagrant"
