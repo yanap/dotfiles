@@ -14,16 +14,8 @@
   "debug"    : true,  // debugger を許可
   "globals": {
     "_": false,
-    "Backbone": true
+    "Backbone": false
   },
-
-  // is not defined 回避
-  option_name: true,
-  another_option_name: false,
-  predef : [
-    'ga',
-    'AMB'
-  ],
 
   // Relaxing Options - 危険性を認識した上で設定すること
   "funcscope" : true, // 制御構造内での変数宣言に警告を出さないようにします

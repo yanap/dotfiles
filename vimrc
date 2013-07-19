@@ -132,6 +132,9 @@ highlight CursorLine ctermbg=black guibg=black
 set lazyredraw
 " 高速ターミナル接続を行う
 set ttyfast
+" .godはrubyです
+au BufNewFile,BufRead *.god     set ft=ruby
+au BufNewFile,BufRead *.god.erb set ft=ruby
 " }}} apperance
 
 " complete {{{
@@ -333,8 +336,6 @@ let g:syntastic_enable_highlighting = 1
 let g:syntastic_auto_loc_list=1
 " javascript の checkは jshintを使うようにする
 let g:syntastic_javascript_checker = "jshint"
-let g:syntastic_error_symbol='×'
-let g:syntastic_warning_symbol='△'
 
 " powerline
 let s:powerline_dir = expand('~/.bundle/powerline/powerline/bindings/vim')
