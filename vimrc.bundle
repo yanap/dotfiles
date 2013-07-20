@@ -1,7 +1,7 @@
 " neobundle,.vimでvimのプラグインを管理する
 " なければ、githubから取得する
 
-let s:neobundle_dir = expand('~/.bundle')
+let s:neobundle_dir = expand('~/.vim/bundle')
 if has('vim_starting') "{{{
   " Set runtimepath.
   " Load neobundle.
