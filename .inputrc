@@ -11,3 +11,12 @@ set completion-ignore-case on
 
 # コンソールの横幅をあふれたとき自動スクロール
 set horizontal-scroll-mode on
+
+# 補完候補が複数個あった場合にすぐに全部表示される
+set show-all-if-ambiguous on
+
+# 補完時にコマンドかディレクトリか見て分かる
+set visible-stats on
+
+# ベルを鳴らなさない
+set bell-style none
