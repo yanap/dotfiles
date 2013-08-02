@@ -349,4 +349,5 @@ nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
 " }}} plugins setting
 "
-" vim: foldmethod=marker
+set foldmethod=marker
+" vim:set foldmethod=marker
