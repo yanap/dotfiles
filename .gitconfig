@@ -24,6 +24,7 @@
   rbi = rebase -i
   c = commit
   ci = commit -av
+  rpo = remote prune origin
   fizzbuzz = "!f() { seq "$@" | awk '$0=NR%15?NR%5?NR%3?$0:\"Fizz\":\"Buzz\":\"FizzBuzz\"' ;}; f"
 [http]
   sslVerify = false
