@@ -18,6 +18,13 @@
 [merge]
   tool = vimdiff
 [alias]
+  s = status
+  so = remote show origin
+  ft = fetch
+  rbi = rebase -i
+  c = commit
+  ci = commit -av
+  fizzbuzz = "!f() { seq "$@" | awk '$0=NR%15?NR%5?NR%3?$0:\"Fizz\":\"Buzz\":\"FizzBuzz\"' ;}; f"
 [http]
   sslVerify = false
 [tig "bind"]

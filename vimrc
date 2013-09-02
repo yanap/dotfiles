@@ -135,6 +135,7 @@ set ttyfast
 " .godはrubyです
 au BufNewFile,BufRead *.god     set ft=ruby
 au BufNewFile,BufRead *.god.erb set ft=ruby
+au BufNewFile,BufRead *.god.j2 set ft=ruby
 " }}} apperance
 
 " complete {{{
@@ -349,5 +350,5 @@ nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
 " }}} plugins setting
 "
-set foldmethod=marker
+" set foldmethod=marker
 " vim:set foldmethod=marker
