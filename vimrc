@@ -348,6 +348,12 @@ endif
 nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
+" rspec vim-rspec
+let s:bundle = neobundle#get('vim-rspec')
+function! s:bundle.hooks.on_source(bundle)
+   let g:rspec_command = 'Dispatch rspec {spec}'
+endfunction
+
 " }}} plugins setting
 "
 " set foldmethod=marker
