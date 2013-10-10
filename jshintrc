@@ -14,7 +14,14 @@
   "debug"    : true,  // debugger を許可
   "globals": {
     "_": false,
-    "Backbone": false
+    "Backbone": false,
+    "JST": false,
+    "M": false,
+    "V": false,
+    "C": false,
+    "BaseView": false,
+    "Conf": false,
+    "Util": false
   },
 
   // Relaxing Options - 危険性を認識した上で設定すること

@@ -107,6 +107,7 @@ if has("autocmd")
   autocmd FileType xml        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType yaml       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType md        setlocal sw=4 sts=4 ts=4 et
 endif
 " }}}
 
@@ -136,6 +137,8 @@ set ttyfast
 au BufNewFile,BufRead *.god     set ft=ruby
 au BufNewFile,BufRead *.god.erb set ft=ruby
 au BufNewFile,BufRead *.god.j2 set ft=ruby
+" gssはcss
+au BufNewFile,BufRead *.gss     set ft=css
 " }}} apperance
 
 " complete {{{
