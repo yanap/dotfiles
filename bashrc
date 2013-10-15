@@ -69,8 +69,4 @@ export NODE_PATH=/usr/local/lib/node_modules
 # bundle
 alias be="bundle exec"
 
-# vagrant cairo
-#alias cairo="cd /Users/yanai_masahiro/repos/syukatu/cairo"
-#alias vcairo="cd /Users/yanai_masahiro/repos/syukatu/cairo-tools/vagrant"
-
 alias rot="cd /Users/yanai_masahiro/repos/24log/rotterdam-web"
