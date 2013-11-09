@@ -67,6 +67,8 @@ NeoBundle 'vim-scripts/rdark'
   NeoBundle 'jondistad/vimclojure'
   " 色々な言語のsyntaxをチェック.
   NeoBundle 'scrooloose/syntastic'
+  " puppet syntax
+  NeoBundle 'puppetlabs/puppet-syntax-vim'
 " }}}
 
 " unite.vim  {{{

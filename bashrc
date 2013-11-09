@@ -55,3 +55,9 @@ export NODE_PATH=/usr/local/lib/node_modules
 
 # bundle
 alias be="bundle exec"
+
+# z
+. `brew --prefix`/etc/profile.d/z.sh
+    function precmd () {
+    _z --add "$(pwd -P)"
+}
