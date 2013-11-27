@@ -175,7 +175,7 @@ set iminsert=0 imsearch=0
 set noimcmdline
 " Tabキーを空白に変換
 set expandtab
-"autocmd FileType php  setlocal noexpandtab
+autocmd FileType php  setlocal noexpandtab
 
 " コンマの後に自動的にスペースを挿入
 inoremap , ,<Space>
@@ -198,7 +198,8 @@ autocmd BufWritePre * :%s/\t/  /ge
 " }}}
 
 " encoding {{{
-set ffs=unix,dos,mac  " 改行文字
+"set ffs=unix,dos,mac  " 改行文字
+set ffs=unix  " 改行文字
 set encoding=utf-8    " デフォルトエンコーディング
 set termencoding=utf-8
 set fileencoding=utf-8

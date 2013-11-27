@@ -50,15 +50,14 @@ history -r
 PROMPT_COMMAND='share_history'
 shopt -u histappend
 
-export EDITOR='vim'
+#export EDITOR='vim'
 
 # reset path
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/bin"
 
 # rbenv
-export RBENV_ROOT=/usr/local/rbenv
-export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init -)"
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
 # python
 export PATH="/usr/local/share/python:$PATH"
