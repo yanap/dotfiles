@@ -43,12 +43,14 @@ shopt -u histappend
 export EDITOR='vim'
 
 # reset path
-export PATH="$HOME/.gems/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/bin"
 
 # rbenv
-export RBENV_ROOT=/usr/local/rbenv
-export PATH="$RBENV_ROOT/bin:$PATH"
-eval "$(rbenv init -)"
+export RBENV_ROOT=/usr/local/var/rbenv
+if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
+
+# python
+export PATH="/usr/local/share/python:$PATH"
 
 # nodejs
 export NODE_PATH=/usr/local/lib/node_modules
@@ -56,6 +58,8 @@ export NODE_PATH=/usr/local/lib/node_modules
 # bundle
 alias be="bundle exec"
 
-# vagrant cairo
-alias cairo="cd /Users/yanai_masahiro/repos/syukatu/cairo"
-alias vcairo="cd /Users/yanai_masahiro/repos/syukatu/cairo-tools/vagrant"
+## z easy jump dir
+. `brew --prefix`/etc/profile.d/z.sh
+    function precmd () {
+    _z --add "$(pwd -P)"
+}
