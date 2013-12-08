@@ -30,6 +30,8 @@ alias greprn='grep -rn --exclude=*.svn*'
 alias bye='sudo shutdown -h now'
 alias rsync='rsync --exclude=*.svn*'
 alias gst='git status'
+alias diff='colordiff'
+alias less='less -R'
 
 function share_history {
 history -a
