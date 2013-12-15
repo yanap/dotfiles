@@ -51,14 +51,12 @@ export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X
 export RBENV_ROOT=/usr/local/var/rbenv
 if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 
-# python
-export PATH="/usr/local/share/python:$PATH"
-
 # nodejs
 export NODE_PATH=/usr/local/lib/node_modules
 
 # bundle
 alias be="bundle exec"
+export PATH=./vendor/bin:$PATH
 
 ## z easy jump dir
 . `brew --prefix`/etc/profile.d/z.sh
