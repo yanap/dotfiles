@@ -139,6 +139,8 @@ au BufNewFile,BufRead *.god.erb set ft=ruby
 au BufNewFile,BufRead *.god.j2 set ft=ruby
 " .pillもruby
 au BufNewFile,BufRead *.pill    set ft=ruby
+" .eyeもruby
+au BufNewFile,BufRead *.eye    set ft=ruby
 " gssはcss
 au BufNewFile,BufRead *.gss     set ft=css
 " }}} apperance
