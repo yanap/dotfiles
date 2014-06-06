@@ -30,6 +30,8 @@ alias greprn='grep -rn --exclude=*.svn*'
 alias bye='sudo shutdown -h now'
 alias rsync='rsync --exclude=*.svn*'
 alias gst='git status'
+alias diff='colordiff'
+alias less='less -R'
 
 function share_history {
 history -a
@@ -43,11 +45,11 @@ shopt -u histappend
 export EDITOR='vim'
 
 # reset path
-export PATH="$HOME/.gems/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/bin"
 
 # rbenv
-export RBENV_ROOT=/usr/local/rbenv
-export PATH="$RBENV_ROOT/bin:$PATH"
+export RBENV_ROOT=/usr/local/var/rbenv
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
 
 # nodejs
@@ -55,7 +57,12 @@ export NODE_PATH=/usr/local/lib/node_modules
 
 # bundle
 alias be="bundle exec"
+export PATH=./vendor/bin:$PATH
 
-# vagrant cairo
-alias cairo="cd /Users/yanai_masahiro/repos/syukatu/cairo"
-alias vcairo="cd /Users/yanai_masahiro/repos/syukatu/cairo-tools/vagrant"
+## z easy jump dir
+. `brew --prefix`/etc/profile.d/z.sh
+    function precmd () {
+    _z --add "$(pwd -P)"
+}
+export DYLD_LIBRARY_PATH=/usr/local/opt/libxml2/lib:$DYLD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH=”$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/
