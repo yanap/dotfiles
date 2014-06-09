@@ -91,8 +91,8 @@ if has("autocmd")
   "そのファイルタイプにあわせたインデントを利用する
   filetype indent on
   autocmd FileType css        setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType diff       setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType diff       setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType eruby       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
   autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
@@ -133,6 +133,8 @@ highlight CursorLine ctermbg=black guibg=black
 set lazyredraw
 " 高速ターミナル接続を行う
 set ttyfast
+" .erbはrubyです
+" au BufNewFile,BufRead *.erb     set ft=ruby
 " .godはrubyです
 au BufNewFile,BufRead *.god     set ft=ruby
 au BufNewFile,BufRead *.god.erb set ft=ruby
