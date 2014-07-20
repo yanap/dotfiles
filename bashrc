@@ -61,3 +61,6 @@ alias be="bundle exec"
     function precmd () {
     _z --add "$(pwd -P)"
 }
+
+# gopath
+export GOPATH=~/gocode

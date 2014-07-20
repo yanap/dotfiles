@@ -69,6 +69,8 @@ NeoBundle 'vim-scripts/rdark'
   NeoBundle 'scrooloose/syntastic'
   " puppet syntax
   NeoBundle 'puppetlabs/puppet-syntax-vim'
+  " go
+  NeoBundle 'fatih/vim-go.git'
 " }}}
 
 " unite.vim  {{{
