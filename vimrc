@@ -180,6 +180,7 @@ set noimcmdline
 " Tabキーを空白に変換
 set expandtab
 autocmd FileType php  setlocal noexpandtab
+autocmd FileType java  setlocal noexpandtab
 
 " コンマの後に自動的にスペースを挿入
 inoremap , ,<Space>
@@ -349,10 +350,11 @@ let g:syntastic_auto_loc_list=1
 let g:syntastic_javascript_checker = "jshint"
 
 " powerline
-let s:powerline_dir = expand('~/.bundle/powerline/powerline/bindings/vim')
-if isdirectory(s:powerline_dir)
-  set rtp+=s:powerline_dir
-endif
+"let s:powerline_dir = expand('~/.bundle/powerline/powerline/bindings/vim')
+"if isdirectory(s:powerline_dir)
+"  set rtp+=s:powerline_dir
+"endif
+" set rtp+=~/.vim/bundle/powerline/powerline/bindings/vim
 
 " airblade/vim-gitgutter
 nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
@@ -363,6 +365,7 @@ let s:bundle = neobundle#get('vim-rspec')
 function! s:bundle.hooks.on_source(bundle)
    let g:rspec_command = 'Dispatch rspec {spec}'
 endfunction
+
 
 " }}} plugins setting
 "

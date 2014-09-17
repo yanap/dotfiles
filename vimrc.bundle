@@ -1,4 +1,5 @@
 " neobundle,.vimでvimのプラグインを管理する
+"
 " なければ、githubから取得する
 
 let s:neobundle_dir = expand('~/.bundle')
@@ -43,7 +44,8 @@ call neobundle#rc(s:neobundle_dir)
   NeoBundle 'banyan/recognize_charcode.vim'
 
   " ステータスライン
-  NeoBundle 'Lokaltog/powerline',  { 'rtp' : 'powerline/bindings/vim'}
+  " NeoBundle 'Lokaltog/powerline',  { 'rtp' : 'powerline/bindings/vim'}
+  NeoBundle 'bling/vim-airline'
 
   " シンタックス
   " color 色
@@ -71,6 +73,8 @@ NeoBundle 'vim-scripts/rdark'
   NeoBundle 'AndrewRadev/vim-eco'
   " 色々な言語のsyntaxをチェック.
   NeoBundle 'scrooloose/syntastic'
+  " go
+  NeoBundle 'fatih/vim-go.git'
 " }}}
 
 " unite.vim  {{{
@@ -190,7 +194,8 @@ NeoBundleLazy 'thinca/vim-ft-help_fold', {
       \     ['n', '<Plug>Ysurround'], ['n', '<Plug>YSurround']
       \ ]}}
   " textobj-user : 簡単にVimエディタのテキストオブジェクトをつくれる
-  NeoBundle 'textobj-user'
+  " NeoBundle 'textobj-user'
+  NeoBundle 'kana/vim-textobj-user'
   " vim-textobj-syntax : syntax hilightされたものをtext-objectに
   NeoBundle 'kana/vim-textobj-syntax.git'
   " vim-textobj-plugins : いろんなものをtext-objectにする

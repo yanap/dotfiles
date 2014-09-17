@@ -76,3 +76,14 @@ alias be="bundle exec"
 }
 export DYLD_LIBRARY_PATH=/usr/local/opt/libxml2/lib:$DYLD_LIBRARY_PATH
 export DYLD_LIBRARY_PATH=”$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/
+
+# go
+export GOPATH=$HOME/gocode
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+#THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
+[[ -s "/Users/A12910/.gvm/bin/gvm-init.sh" ]] && source "/Users/A12910/.gvm/bin/gvm-init.sh"
+
+# java
+JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
