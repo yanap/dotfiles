@@ -23,8 +23,9 @@ alias t='tar zxvf'
 alias t-='tar xvf -'
 alias b='bzip2 -dc'
 alias dh='df -h'
-export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
-alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+#export EDITOR=/Applications/MacVim.app/Contents/MacOS/Vim
+#alias vim='env LANG=ja_JP.UTF-8 /Applications/MacVim.app/Contents/MacOS/Vim "$@"'
+alias vim='mvim -v'
 alias grep='grep --exclude=*.svn*'
 alias greprn='grep -rn --exclude=*.svn*'
 alias bye='sudo shutdown -h now'
@@ -62,5 +63,7 @@ alias be="bundle exec"
     _z --add "$(pwd -P)"
 }
 
-# gopath
-export GOPATH=~/gocode
+# go
+export GOPATH=$HOME/gocode
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
