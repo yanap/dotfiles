@@ -6,10 +6,10 @@ if [ `uname` = "Darwin" ]; then
   setup_mac
 elif [ `uname` = "Linux" ]; then
 #Linux用のコード
-  if [ `which yum` = "/usr/bin/yum" ];
+  if [ `which yum` = "/usr/bin/yum" ]; then
     echo "centos"
     setup_centos
-  elif [ `which apt-get` = "/usr/bin/apt-get" ]
+  elif [ `which apt-get` = "/usr/bin/apt-get" ]; then
     echo "ubuntu"
     setup_ubuntu
   fi
@@ -17,7 +17,7 @@ fi
 
 setup_mac() {
   # brew install
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)")
+  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 
   # install packages
   brew install zsh vim git tmux tree htop the_silver_searcher go nmap
