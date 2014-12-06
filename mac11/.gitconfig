@@ -1,0 +1,15 @@
+[user]
+	name  = yanap
+	email = yanap1214@gmail.com
+[color]
+	status = auto
+	diff = auto
+	branch = auto
+	interactive = auto
+	grep = auto
+[push]
+	default = tracking
+[core]
+	excludesfile = ~/.gitignore
+	autocrlf = input
+	editor = vim
