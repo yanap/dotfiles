@@ -1,0 +1,36 @@
+# for shortcut
+alias ls='ls -GwF'
+alias ll='ls -GwFalh'
+alias la='ls -alh'
+alias t='tar zxvf'
+alias t-='tar xvf -'
+alias b='bzip2 -dc'
+alias dh='df -h'
+alias vim='mvim -v'
+alias grep='grep --exclude=*.svn*'
+alias greprn='grep -rn --exclude=*.svn*'
+alias bye='sudo shutdown -h now'
+alias rsync='rsync --exclude=*.svn*'
+alias gst='git status'
+
+# rbenv
+export RBENV_ROOT=/usr/local/rbenv
+export PATH="$RBENV_ROOT/bin:$PATH"
+eval "$(rbenv init -)"
+
+# nodejs
+export NODE_PATH=/usr/local/lib/node_modules
+
+# bundle
+alias be="bundle exec"
+
+# z
+. `brew --prefix`/etc/profile.d/z.sh
+    function precmd () {
+    _z --add "$(pwd -P)"
+}
+
+# go
+export GOPATH=$HOME/gocode
+export GOROOT=/usr/local/opt/go/libexec
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH

@@ -1,7 +1,3 @@
-# include bash
-if [ -e ~/.bashrc ]; then
-    source ~/.bashrc
-fi
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -85,8 +81,10 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+# mac vim
 alias vim="mvim -v"
 
+# peco
 function peco-select-history() {
   local tac
   if which tac > /dev/null; then
@@ -102,3 +100,8 @@ function peco-select-history() {
 }
 zle -N peco-select-history
 bindkey '^r' peco-select-history
+
+# include bashrc. change name .zshrc_extra
+if [ -e ~/.zshrc_extra ]; then
+    source ~/.zshrc_extra
+fi
