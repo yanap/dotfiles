@@ -73,6 +73,8 @@ NeoBundle 'vim-scripts/rdark'
   NeoBundle 'fatih/vim-go.git'
   " coffeescript
   NeoBundle 'vim-coffee-script'
+  " slim
+  NeoBundle 'slim-template/vim-slim'
 " }}}
 
 " unite.vim  {{{

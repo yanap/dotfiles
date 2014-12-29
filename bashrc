@@ -67,3 +67,7 @@ alias be="bundle exec"
 export GOPATH=$HOME/gocode
 export GOROOT=/usr/local/opt/go/libexec
 export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+
+alias ag='ag -S --stats --pager "less -F"'
+alias agh='ag --hidden'
+
