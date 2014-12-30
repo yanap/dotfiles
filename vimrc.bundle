@@ -75,6 +75,8 @@ NeoBundle 'vim-scripts/rdark'
   NeoBundle 'vim-coffee-script'
   " slim
   NeoBundle 'slim-template/vim-slim'
+  " jade
+  NeoBundle 'digitaltoad/vim-jade'
 " }}}
 
 " unite.vim  {{{
