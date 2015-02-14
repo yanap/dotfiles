@@ -31,6 +31,8 @@ alias greprn='grep -rn --exclude=*.svn*'
 alias bye='sudo shutdown -h now'
 alias rsync='rsync --exclude=*.svn*'
 alias gst='git status'
+alias diff='colordiff'
+alias less='less -R'
 
 function share_history {
 history -a
@@ -47,8 +49,8 @@ export EDITOR='vim'
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:$HOME/bin"
 
 # rbenv
-export RBENV_ROOT=/usr/local/rbenv
-export PATH="$RBENV_ROOT/bin:$PATH"
+export RBENV_ROOT=/usr/local/var/rbenv
+#if which rbenv > /dev/null; then eval "$(rbenv init -)"; fi
 eval "$(rbenv init -)"
 
 # nodejs
@@ -56,8 +58,9 @@ export NODE_PATH=/usr/local/lib/node_modules
 
 # bundle
 alias be="bundle exec"
+export PATH=./vendor/bin:$PATH
 
-# z
+## z easy jump dir
 . `brew --prefix`/etc/profile.d/z.sh
     function precmd () {
     _z --add "$(pwd -P)"
@@ -71,3 +74,5 @@ export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
 alias ag='ag -S --stats --pager "less -F"'
 alias agh='ag --hidden'
 
+export DYLD_LIBRARY_PATH=/usr/local/opt/libxml2/lib:$DYLD_LIBRARY_PATH
+export DYLD_LIBRARY_PATH=”$DYLD_LIBRARY_PATH:/usr/local/mysql/lib/

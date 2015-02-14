@@ -1,0 +1,34 @@
+[user]
+  name = yanap
+  email = yanap1214@gmail.com
+[color]
+  # colorの設定(以下のコマンドは自動で色つける)
+  status = auto
+  diff = auto
+  branch = auto
+  interactive = auto
+  grep = auto
+[push]
+  default = tracking       # defaultのpush先はtrackingしているリポジトリ
+[core]
+  excludesfile = ~/.gitignore  # globalな.gitignoreの指定
+  autocrlf = input                 # CRLFを自動変換
+  editor = vim
+  quotepath = false
+[merge]
+  tool = vimdiff
+[alias]
+  s = status
+  so = remote show origin
+  ft = fetch
+  rbi = rebase -i
+  c = commit
+  ci = commit -av
+  rpo = remote prune origin
+[http]
+  sslVerify = false
+[tig "bind"]
+  generic = g move-first-line
+  generic = G move-last-line
+  generic = ^F move-page-down
+  generic = ^B move-page-up

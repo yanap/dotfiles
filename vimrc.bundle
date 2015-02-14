@@ -65,6 +65,10 @@ NeoBundle 'vim-scripts/rdark'
   NeoBundle 'tpope/vim-markdown'
   " clojure
   NeoBundle 'jondistad/vimclojure'
+  " coffee script
+  NeoBundle 'kchmck/vim-coffee-script'
+  " backbone.js jst eco
+  NeoBundle 'AndrewRadev/vim-eco'
   " 色々な言語のsyntaxをチェック.
   NeoBundle 'scrooloose/syntastic'
   " puppet syntax
@@ -243,10 +247,17 @@ NeoBundleLazy 'thinca/vim-ft-help_fold', {
   NeoBundle 'vim-ruby/vim-ruby'
   " rails.vim : rails的なアレ
   NeoBundle 'tpope/vim-rails'
+  " rspec
+  NeoBundleLazy 'thoughtbot/vim-rspec', {
+      \ 'depends'  : 'tpope/vim-dispatch',
+      \ 'autoload' : { 'filetypes' : ['ruby'] }
+      \ }
   " ソースコード上のメソッド宣言、変数宣言の一覧を表示
   NeoBundle 'taglist.vim'
   " php-doc コメント
   NeoBundle 'vim-scripts/php-doc'
+  " backbone.js
+  NeoBundle 'mklabs/vim-backbone'
 " }}}
 
 " 記録の取り方  {{{

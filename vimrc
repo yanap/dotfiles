@@ -91,8 +91,8 @@ if has("autocmd")
   "そのファイルタイプにあわせたインデントを利用する
   filetype indent on
   autocmd FileType css        setlocal sw=2 sts=2 ts=2 et
-  autocmd FileType diff       setlocal sw=4 sts=4 ts=4 et
-  autocmd FileType eruby      setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType diff       setlocal sw=2 sts=2 ts=2 et
+  autocmd FileType eruby       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType html       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType javascript setlocal sw=2 sts=2 ts=2 et
   autocmd FileType perl       setlocal sw=4 sts=4 ts=4 et
@@ -107,6 +107,7 @@ if has("autocmd")
   autocmd FileType xml        setlocal sw=4 sts=4 ts=4 et
   autocmd FileType yaml       setlocal sw=2 sts=2 ts=2 et
   autocmd FileType zsh        setlocal sw=4 sts=4 ts=4 et
+  autocmd FileType md        setlocal sw=4 sts=4 ts=4 et
 endif
 " }}}
 
@@ -132,6 +133,18 @@ highlight CursorLine ctermbg=black guibg=black
 set lazyredraw
 " 高速ターミナル接続を行う
 set ttyfast
+" .erbはrubyです
+" au BufNewFile,BufRead *.erb     set ft=ruby
+" .godはrubyです
+au BufNewFile,BufRead *.god     set ft=ruby
+au BufNewFile,BufRead *.god.erb set ft=ruby
+au BufNewFile,BufRead *.god.j2 set ft=ruby
+" .pillもruby
+au BufNewFile,BufRead *.pill    set ft=ruby
+" .eyeもruby
+au BufNewFile,BufRead *.eye    set ft=ruby
+" gssはcss
+au BufNewFile,BufRead *.gss     set ft=css
 " }}} apperance
 
 " complete {{{
@@ -185,11 +198,12 @@ inoremap <C-o> <ESC>:<C-U>YRPaste 'p'<CR>i
 " 保存時に行末の空白を除去する
 autocmd BufWritePre * :%s/\s\+$//ge
 " 保存時にtabをスペースに変換する
-"autocmd BufWritePre * :%s/\t/  /ge
+autocmd BufWritePre * :%s/\t/  /ge
 " }}}
 
 " encoding {{{
-set ffs=unix,dos,mac  " 改行文字
+"set ffs=unix,dos,mac  " 改行文字
+set ffs=unix  " 改行文字
 set encoding=utf-8    " デフォルトエンコーディング
 set termencoding=utf-8
 set fileencoding=utf-8
@@ -321,12 +335,18 @@ omap <silent> ie <Plug>CamelCaseMotion_ie
 xmap <silent> ie <Plug>CamelCaseMotion_ie
 
 " Syntastic
+let g:syntastic_mode_map = {
+      \ "mode" : "active",
+      \ "active_filetypes" : ["ruby", "javascript", "json"],
+      \}
 " エラー行をsignで表示する
 let g:syntastic_enable_signs = 1
 " 可能ならhighligt表示する
 let g:syntastic_enable_highlighting = 1
 " 自動的に開いたり閉じたりする
 let g:syntastic_auto_loc_list=1
+" javascript の checkは jshintを使うようにする
+let g:syntastic_javascript_checker = "jshint"
 
 " powerline
 let s:powerline_dir = expand('~/.bundle/powerline/powerline/bindings/vim')
@@ -338,6 +358,13 @@ endif
 nnoremap <silent> ,gg :<C-u>GitGutterToggle<CR>
 nnoremap <silent> ,gh :<C-u>GitGutterLineHighlightsToggle<CR>
 
+" rspec vim-rspec
+let s:bundle = neobundle#get('vim-rspec')
+function! s:bundle.hooks.on_source(bundle)
+   let g:rspec_command = 'Dispatch rspec {spec}'
+endfunction
+
 " }}} plugins setting
 "
-" vim: foldmethod=marker
+" set foldmethod=marker
+" vim:set foldmethod=marker
