@@ -50,6 +50,7 @@ plugins=(git)
 # User configuration
 
 export PATH="/Users/masahiroyanai/gocode/bin:/usr/local/opt/go/libexec/bin:/usr/local/rbenv/shims:/usr/local/rbenv/bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/X11/bin:/Users/masahiroyanai/bin"
+export PATH=$PATH:/Users/masahiroyanai/Library/Android/sdk/platform-tools
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -108,6 +109,9 @@ fi
 alias be="bundle exec"
 alias bs="bundle exec spring"
 
-alias ag='ag -S --stats --pager "less -F"'
-alias agh='ag --hidden'
+alias ag='ag -S'
+#alias ag='ag -S --stats --pager "less -F"'
+#alias agh='ag --hidden'
+#export JAVA_HOME=$(/usr/libexec/java_home -v 1.7)
 
+export STUDIO_JDK=/Library/Java/JavaVirtualMachines/jdk1.8.0_25.jdk
