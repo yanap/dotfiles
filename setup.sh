@@ -1,5 +1,14 @@
 #!/bin/bash
 
+copy_dotfiles() {
+  #TIME = `date "+%s"`
+  #mkdir ~/backup_dotfiles
+  #cp ~/backup_dotfiles/.zshrc_$TIME
+  #cp ./.zshrc ~/.zshrc
+  #cp ./.vimrc ~/.vimrc
+  cp ./.tmux.conf ~/.tmux.conf
+}
+
 setup_mac() {
   # brew install
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
@@ -34,15 +43,6 @@ function setup_ubuntu() {
   apt-get install golang -y
   go get github.com/peco/peco/cmd/peco
   copy_files
-}
-
-copy_dotfiles() {
-  #TIME = `date "+%s"`
-  #mkdir ~/backup_dotfiles
-  #cp ~/backup_dotfiles/.zshrc_$TIME
-  #cp ./.zshrc ~/.zshrc
-  #cp ./.vimrc ~/.vimrc
-  cp ./.tmux.conf ~/.tmux.conf
 }
 
 if [ `uname` = "Darwin" ]; then
