@@ -6,7 +6,7 @@ copy_dotfiles() {
   #cp ~/backup_dotfiles/.zshrc_$TIME
   #cp ./.zshrc ~/.zshrc
   #cp ./.vimrc ~/.vimrc
-  cp ./.tmux.conf ~/.tmux.conf
+  #cp ./.tmux.conf ~/.tmux.conf
 }
 
 setup_mac() {
@@ -20,7 +20,7 @@ setup_mac() {
   brew install peco
   brew tap motemen/ghq
   brew install ghq
-  copy_dotfiles
+  #copy_dotfiles
 }
 
 setup_centos() {
@@ -32,7 +32,7 @@ setup_centos() {
   rpm -ivh http://swiftsignal.com/packages/centos/6/x86_64/the-silver-searcher-0.13.1-1.el6.x86_64.rpm
   yum install go
   go get github.com/peco/peco/cmd/peco
-  copy_dotfiles
+  #copy_dotfiles
 }
 
 function setup_ubuntu() {
@@ -42,7 +42,7 @@ function setup_ubuntu() {
   apt-get install silversearcher-ag -y
   apt-get install golang -y
   go get github.com/peco/peco/cmd/peco
-  copy_dotfiles
+  #copy_dotfiles
 }
 
 if [ `uname` = "Darwin" ]; then
