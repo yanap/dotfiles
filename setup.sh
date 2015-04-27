@@ -20,7 +20,7 @@ setup_mac() {
   brew install peco
   brew tap motemen/ghq
   brew install ghq
-  copy_files
+  copy_dotfiles
 }
 
 setup_centos() {
@@ -32,7 +32,7 @@ setup_centos() {
   rpm -ivh http://swiftsignal.com/packages/centos/6/x86_64/the-silver-searcher-0.13.1-1.el6.x86_64.rpm
   yum install go
   go get github.com/peco/peco/cmd/peco
-  copy_files
+  copy_dotfiles
 }
 
 function setup_ubuntu() {
@@ -42,7 +42,7 @@ function setup_ubuntu() {
   apt-get install silversearcher-ag -y
   apt-get install golang -y
   go get github.com/peco/peco/cmd/peco
-  copy_files
+  copy_dotfiles
 }
 
 if [ `uname` = "Darwin" ]; then
