@@ -17,8 +17,19 @@ export PATH="/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin"
 export PATH=/usr/local/bin:$PATH
 
 # for go
-export GOPATH=${HOME}/go
-export PATH=$PATH:/usr/local/opt/go/libexec/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
+
+# for vim
+alias vim="mvim -v"
+alias grep='grep --exclude=*.svn*'
+alias greprn='grep -rn --exclude=*.svn*'
+alias bye='sudo shutdown -h now'
+alias rsync='rsync --exclude=*.svn*'
+alias gst='git status'
+alias diff='colordiff'
+alias less='less -R'
+export XDG_CONFIG_HOME="$HOME/.config"
 
 # for Android
 export PATH=/Users/yana/Library/Android/sdk/platform-tools:$PATH
@@ -32,9 +43,6 @@ export PATH=${PATH}:$ANDROID_NDK_HOME
 PERL_MB_OPT="--install_base \"/Users/yana/perl5\""; export PERL_MB_OPT;
 PERL_MM_OPT="INSTALL_BASE=/Users/yana/perl5"; export PERL_MM_OPT;
 export PERL5LIB="/Users/my_user/perl5/lib/perl5:/Library/Perl/5.16:/Applications/Xcode.app/Contents/Developer/Library/Perl/5.16"
-
-# for alias
-alias vim="mvim -v"
 
 # for peco
 function peco-select-history() {
