@@ -20,12 +20,10 @@ export PATH=/usr/local/bin:$PATH
 export GOPATH=$HOME/go
 export PATH=$PATH:/usr/local/opt/go/libexec/bin:$GOPATH/bin
 
-# for vim
-alias vim="mvim -v"
-alias grep='grep --exclude=*.svn*'
-alias greprn='grep -rn --exclude=*.svn*'
+# for alias
+alias vi="/usr/bin/vim"
+alias vim="nvim"
 alias bye='sudo shutdown -h now'
-alias rsync='rsync --exclude=*.svn*'
 alias gst='git status'
 alias diff='colordiff'
 alias less='less -R'
@@ -66,8 +64,11 @@ if which rbenv > /dev/null; then
   eval "$(rbenv init -)";
 fi
 
+# for postgres
+export PGDATA=/usr/local/var/postgres
+
 # The next line updates PATH for the Google Cloud SDK.
-source '/Users/yana/google-cloud-sdk/path.zsh.inc'
+#source '/Users/yana/google-cloud-sdk/path.zsh.inc'
 
 # The next line enables bash completion for gcloud.
-source '/Users/yana/google-cloud-sdk/completion.zsh.inc'
+#source '/Users/yana/google-cloud-sdk/completion.zsh.inc'
