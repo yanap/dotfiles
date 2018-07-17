@@ -75,8 +75,6 @@ NeoBundle 'vim-scripts/rdark'
   NeoBundle 'puppetlabs/puppet-syntax-vim'
   " go
   NeoBundle 'fatih/vim-go.git'
-  " coffeescript
-  NeoBundle 'vim-coffee-script'
   " slim
   NeoBundle 'slim-template/vim-slim'
   " jade
